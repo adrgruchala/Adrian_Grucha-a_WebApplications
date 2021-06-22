@@ -1,0 +1,27 @@
+<h2>Add Book</h2>
+
+<div>
+  <label for="new-book-name">Book name: </label>
+  <input id="new-book-name" #heroName/>
+  <label for="new-book-author">Book author: </label>
+  <input id="new-book-author" #heroAuthor/>
+  <label for="new-book-isbn">Book isbn: </label>
+  <input id="new-book-isbn" #heroIsbn/>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(heroName.value, heroAuthor.value, heroIsbn.value);
+   heroName.value=''; heroAuthor.value=''; heroIsbn.value=''">
+    Add book
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero"
+            (click)="delete(hero)">x
+    </button>
+  </li>
+</ul>
